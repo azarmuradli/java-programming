@@ -1,0 +1,62 @@
+Basic exercise
+In the following, we implement a garden with some plants. Create the program so that it conforms to what is described in the structural tests (GardeningTestSuite and the classes it refers to).
+
+A Plant osztály adattagjainak jelentése:
+
+id: unique plant ID
+growthRate: shows how fast the plant grows
+maturity: current plant maturity level
+maturityGoal: if the plant's maturity reaches this level, it is considered a mature plant
+About the constructor:
+
+Increase populationCount by one and set id to the new value.
+The constructor takes the values for growthRate and maturityGoal. Set maturity to 0.
+Let getGrowthRateModifier() return 1, 2, or 6 depending on the enum element that it takes.
+
+Let the grow() method increase maturity using getGrowthRateModifier and growthRate.
+
+isMature() returns whether maturity has already reached the value of maturityGoal.
+
+Attention: this class is not instantiable.
+
+Plants
+Orchids grow FAST and are considered mature at the goal of 15. Palms only grow at a MODERATE rate and their goal is 10.
+
+For both classes, their new fields start with the value 0.
+
+Orchids grow as usual, but if they are already mature, they also increase their flowerCount by one when growing.
+
+When a palm tree grows, in addition to the standard growing, their coconutFruitCount also increases by COCONUT_YIELD. A palm tree isMature when, in addition to the base condition, it has at least 12 coconut fruits.
+
+Create functional testers: gardening.plants.OrchidTest and gardening.plants.PalmTreeTest.
+
+Write a single tester method in both that does the following.
+First, create the appropriate plant (let the type of the variable be Plant), and check its textual representation.
+Then call grow() four times, and check its textual representation.
+Then call grow() four times again, and check its textual representation.
+The expected texts in the case of orchids are:
+
+(Orchid 0; flower count: 0; maturity level: 0; is not mature)
+(Orchid 0; flower count: 2; maturity level: 24; is mature)
+(Orchid 0; flower count: 6; maturity level: 48; is mature)
+The expected texts in the case of palm trees are:
+
+(Palm tree 0; coconut fruit count: 0; maturity level: 0; is not mature)
+(Palm tree 0; coconut fruit count: 8; maturity level: 8; is not mature)
+(Palm tree 0; coconut fruit count: 16; maturity level: 16; is mature)
+Garden
+Class Garden has two, initially empty lists. They are intentionally public.
+
+Methods plantPalmTree() and plantOrchid() create and add the indicated plant to seedlings.
+
+The growAll() method invokes grow() on all elements of seedlings.
+
+If the seedling has matured, add it to maturePlants.
+After you're done growing the plants, make sure that no mature plants remain in seedlings.
+Hint: the documentation of ArrayList has a method that is quite suitable.
+Create the functional tester class gardening.garden.GardenTest with a single method that does the following.
+
+Create a new garden. Test that it has no plants.
+Plant one of each plant. Test that you have two seedlings but no mature plants.
+Grow the plants four times. Test that you have one seedling and one mature plant.
+Grow the plants four times. Test that you have two mature plants but no seedlings.
